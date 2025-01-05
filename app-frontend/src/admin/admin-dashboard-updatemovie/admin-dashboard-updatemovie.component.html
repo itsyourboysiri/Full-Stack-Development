@@ -1,0 +1,202 @@
+<form name="movieUpdateForm" (ngSubmit)="onSubmit()" #movieUpdateForm="ngForm" novalidate>
+    <!-- Movie Name -->
+    <div class="form-group">
+      <label for="movieName">Movie Name:</label>
+      <input
+        type="text"
+        id="movieName"
+        name="movieName"
+        class="form-control"
+        required
+        [(ngModel)]="movie.movieName"
+        #movieName="ngModel"
+      />
+      <div *ngIf="movieName.invalid && (movieName.touched || movieUpdateForm.submitted)" class="error">
+        Movie name is required.
+      </div>
+    </div>
+  
+    <!-- Category -->
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input
+        type="text"
+        id="category"
+        name="category"
+        class="form-control"
+        required
+        [(ngModel)]="movie.category"
+        #category="ngModel"
+      />
+      <div *ngIf="category.invalid && (category.touched || movieUpdateForm.submitted)" class="error">
+        Category is required.
+      </div>
+    </div>
+  
+    <!-- Release Year -->
+    <div class="form-group">
+      <label for="releaseYear">Released Year:</label>
+      <input
+        type="number"
+        id="releaseYear"
+        name="releaseYear"
+        class="form-control"
+        required
+        min="1888"
+        [max]="currentYear"
+        [(ngModel)]="movie.releaseYear"
+        #releaseYear="ngModel"
+      />
+      <div *ngIf="releaseYear.invalid && (releaseYear.touched || movieUpdateForm.submitted)" class="error">
+        Released year is required and must be valid.
+      </div>
+    </div>
+  
+    <!-- Picture -->
+    <div class="form-group">
+      <label for="picture">Movie Picture:</label>
+      <input
+        type="file"
+        id="picture"
+        name="picture"
+        class="form-control"
+        (change)="onFileSelect($event)"
+      />
+    </div>
+  
+    <!-- Display Current or Newly Selected Picture -->
+    <div *ngIf="movie.picture">
+      <label>Current Picture:</label>
+      <img [src]="movie.picturePreview || movie.picture" alt="Movie Picture" class="img-thumbnail mt-2" width="150" />
+    </div>
+  
+    <!-- Cast Members -->
+    <div class="form-group">
+      <label for="cast">Cast Members:</label>
+      <textarea
+        id="cast"
+        name="cast"
+        class="form-control"
+        required
+        [(ngModel)]="movie.cast"
+        #cast="ngModel"
+      ></textarea>
+      <div *ngIf="cast.invalid && (cast.touched || movieUpdateForm.submitted)" class="error">
+        Cast members are required.
+      </div>
+    </div>
+  
+    <!-- Trailer Link -->
+    <div class="form-group">
+      <label for="trailerLink">Trailer Link:</label>
+      <input
+        type="url"
+        id="trailerLink"
+        name="trailerLink"
+        class="form-control"
+        required
+        [(ngModel)]="movie.trailerLink"
+        #trailerLink="ngModel"
+      />
+      <div *ngIf="trailerLink.invalid && (trailerLink.touched || movieUpdateForm.submitted)" class="error">
+        Trailer link is required.
+      </div>
+    </div>
+  
+    <!-- Watch Time -->
+    <div class="form-group">
+      <label for="watchTime">Watch Time (minutes):</label>
+      <input
+        type="number"
+        id="watchTime"
+        name="watchTime"
+        class="form-control"
+        required
+        [(ngModel)]="movie.watchTime"
+        #watchTime="ngModel"
+      />
+      <div *ngIf="watchTime.invalid && (watchTime.touched || movieUpdateForm.submitted)" class="error">
+        Watch time is required.
+      </div>
+    </div>
+  
+    <!-- Time Slots -->
+    <label>Time Slots:</label>
+    <div *ngFor="let slot of movie.timeSlots; let i = index" class="input-group mb-2">
+      <input
+        type="time"
+        [(ngModel)]="movie.timeSlots[i]"
+        name="timeSlot{{ i }}"
+        class="form-control"
+        required
+        #timeSlot="ngModel"
+      />
+      <button type="button" class="btn btn-danger" (click)="removeTimeSlot(i)">Remove</button>
+    </div>
+    <button type="button" class="btn btn-secondary" (click)="addTimeSlot()">Add Time Slot</button>
+    <div *ngIf="movieUpdateForm.submitted && movie.timeSlots.length === 0" class="error">
+      At least one time slot is required.
+    </div>
+  
+    <!-- Director Name -->
+    <div class="form-group">
+      <label for="director">Director Name:</label>
+      <input
+        type="text"
+        id="director"
+        name="director"
+        class="form-control"
+        required
+        [(ngModel)]="movie.director"
+        #director="ngModel"
+      />
+      <div *ngIf="director.invalid && (director.touched || movieUpdateForm.submitted)" class="error">
+        Director name is required.
+      </div>
+    </div>
+  
+    <!-- Now Screening -->
+    <div class="form-group">
+      <label>Now Screening:</label>
+      <div class="form-check">
+        <input
+          type="radio"
+          id="nowScreeningYes"
+          name="nowScreening"
+          class="form-check-input"
+          value="Yes"
+          [(ngModel)]="movie.nowScreening"
+          required
+        />
+        <label for="nowScreeningYes" class="form-check-label">Yes</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          id="nowScreeningNo"
+          name="nowScreening"
+          class="form-check-input"
+          value="No"
+          [(ngModel)]="movie.nowScreening"
+        />
+        <label for="nowScreeningNo" class="form-check-label">No</label>
+      </div>
+      <div *ngIf="movieUpdateForm.submitted && !movie.nowScreening" class="error">
+        Please select if the movie is currently screening.
+      </div>
+    </div>
+
+       <!-- Additional Information -->
+       <div class="form-group">
+        <label>Additional Info:</label>
+        <textarea id="additionalInfo" name="additionalInfo" class="form-control" [(ngModel)]="movie.additionalInfo">
+  {{ movie.additionalInfo || '' }}
+</textarea>
+    </div>
+  
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" >
+      Update Movie
+    </button>
+  </form>
+  

@@ -1,0 +1,124 @@
+<form name="movieinsertform" (ngSubmit)="onSubmit()" #movieInsertForm="ngForm" novalidate>
+  <!-- Movie Name -->
+  <div class="form-group">
+    <label for="movieName">Movie Name:</label>
+    <input type="text" id="movieName" name="movieName" class="form-control" required [(ngModel)]="movie.movieName">
+    <div *ngIf="movieInsertForm.submitted && !movie.movieName" class="error">
+      Movie name is required.
+    </div>
+  </div>
+
+  <!-- Category -->
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" class="form-control" required [(ngModel)]="movie.category">
+    <div *ngIf="movieInsertForm.submitted && !movie.category" class="error">
+      Category is required.
+    </div>
+  </div>
+
+  <!-- Release Year -->
+  <div class="form-group">
+    <label for="releaseYear">Released Year:</label>
+    <input type="number" id="releaseYear" name="releaseYear" class="form-control" required
+      [(ngModel)]="movie.releaseYear">
+    <div *ngIf="movieInsertForm.submitted && !movie.releaseYear" class="error">
+      Released year is required and must be valid.
+    </div>
+  </div>
+
+  <!-- Cast Members -->
+  <div class="form-group">
+    <label for="cast">Cast Members:</label>
+    <textarea id="cast" name="cast" class="form-control" required [(ngModel)]="movie.cast"
+      placeholder="Enter cast members separated by commas"></textarea>
+    <div *ngIf="movieInsertForm.submitted && !movie.cast" class="error">
+      Cast members are required.
+    </div>
+  </div>
+
+  <!-- Trailer Link -->
+  <div class="form-group">
+    <label for="trailerLink">Trailer Link:</label>
+    <input type="url" id="trailerLink" name="trailerLink" class="form-control" required [(ngModel)]="movie.trailerLink"
+      placeholder="Enter the trailer URL">
+    <div *ngIf="movieInsertForm.submitted && !movie.trailerLink" class="error">
+      Trailer link is required.
+    </div>
+  </div>
+
+  <!-- Watch Time -->
+  <div class="form-group">
+    <label for="watchTime">Watch Time (minutes):</label>
+    <input type="number" id="watchTime" name="watchTime" class="form-control" required [(ngModel)]="movie.watchTime"
+      placeholder="Enter the watch time in minutes">
+    <div *ngIf="movieInsertForm.submitted && !movie.watchTime" class="error">
+      Watch time is required.
+    </div>
+  </div>
+
+   <!-- Time Slots -->
+   <label>Time Slots:</label>
+   <div *ngFor="let slot of movie.timeSlots; let i = index" class="input-group mb-2">
+     <input
+       type="time"
+       [(ngModel)]="movie.timeSlots[i]"
+       name="timeSlot{{ i }}"
+       class="form-control"
+       required
+     />
+     <button type="button" class="btn btn-danger" (click)="removeTimeSlot(i)">Remove</button>
+   </div>
+   <button type="button" class="btn btn-secondary" (click)="addTimeSlot()">Add Time Slot</button>
+   <div *ngIf="movieInsertForm.submitted && movie.timeSlots.length === 0" class="error">
+     At least one time slot is required.
+   </div>
+ 
+
+  <!-- Director Name -->
+  <div class="form-group">
+    <label for="director">Director Name:</label>
+    <input type="text" id="director" name="director" class="form-control" required [(ngModel)]="movie.director"
+      placeholder="Enter the director's name">
+    <div *ngIf="movieInsertForm.submitted && !movie.director" class="error">
+      Director name is required.
+    </div>
+  </div>
+  <!-- Now Screening -->
+  <div class="form-group">
+    <label>Now Screening:</label>
+    <div class="form-check">
+      <input type="radio" id="nowScreeningYes" name="nowScreening" class="form-check-input" value="Yes"
+        [(ngModel)]="movie.nowScreening" required>
+      <label for="nowScreeningYes" class="form-check-label">Yes</label>
+    </div>
+    <div class="form-check">
+      <input type="radio" id="nowScreeningNo" name="nowScreening" class="form-check-input" value="No"
+        [(ngModel)]="movie.nowScreening">
+      <label for="nowScreeningNo" class="form-check-label">No</label>
+    </div>
+    <div *ngIf="movieInsertForm.submitted && !movie.nowScreening" class="error">
+      Please select if the movie is currently screening.
+    </div>
+  </div>
+
+  <!-- Picture -->
+  <div class="form-group">
+    <label for="picture">Movie Picture:</label>
+    <input type="file" id="picture" name="picture" class="form-control" (change)="onFileSelect($event)" required>
+    <div *ngIf="movieInsertForm.submitted && !movie.picture" class="error">
+      Movie picture is required.
+    </div>
+  </div>
+
+  <!-- Additional Information -->
+  <div class="form-group">
+    <label for="additionalInfo">Additional Info:</label>
+    <textarea id="additionalInfo" name="additionalInfo" class="form-control" [(ngModel)]="movie.additionalInfo">
+      {{ movie.additionalInfo || '' }}
+    </textarea>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-primary">Insert Movie</button>
+</form>
