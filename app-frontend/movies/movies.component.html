@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Cards</title>
+  
+
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <div *ngFor="let movie of movies" class="col">
+        <div class="card" (click)="navigateToSingleMovie(movie._id)">
+          <div class="image-container">
+            <img [src]="movie.picture" alt="{{ movie.movieName }}" class="card-img-top">
+            <div class="card-overlay"></div>
+            <button class="read-more-btn">Book Now</button>
+          </div>
+          <h5 class="card-title mt-2">{{ movie.movieName }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>
