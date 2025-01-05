@@ -1,0 +1,65 @@
+name: Angular Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  angular:
+    name: Angular Build
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+       
+
+
+    strategy:
+      matrix:
+        node-version: [20.14]
+
+    steps:
+      - name: Checkout the source code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.14
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      # Install backend dependencies
+      - name: Install backend dependencies
+        run: npm install
+        working-directory: app-backend
+
+      # Start the backend server
+      - name: Start Backend Server
+        env:
+          MONGO_URI: "mongodb://localhost:27017/sample"
+        run: node backend.js &
+        working-directory: app-backend
+
+      # Wait for the backend to start
+      - name: Wait for Backend to Start
+        run: sleep 10
+
+      # Install frontend dependencies
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: app-frontend
+
+      # Run frontend tests
+      - name: Run frontend tests
+        run: npm run test:ci
+        working-directory: app-frontend
+
+      # Build frontend
+      - name: Build frontend
+        run: npm run build
+        working-directory: app-frontend
