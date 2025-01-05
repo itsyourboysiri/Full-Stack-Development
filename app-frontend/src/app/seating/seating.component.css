@@ -1,0 +1,295 @@
+/* Basic body styling */
+body {
+  font-family: Arial, sans-serif;
+  
+  background-color: #121212;
+  text-align: center;
+  margin: 0;
+}
+
+/* Header section */
+.header {
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* Screen and Calendar Section */
+.screen-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  padding: 0 10px;
+  gap: 20px; /* Add spacing between elements */
+}
+
+/* "Now Showing" Tab */
+.left-tab {
+  background-color: #444;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 17%;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+.left-tab:hover {
+  background-color: #555;
+}
+
+/* Screen Indicator */
+.screen {
+  margin-top: 8%;
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  width: 63%;
+  max-width: 1200px;
+  height: 45px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar container */
+.calendar {
+  width: 17%;
+  max-width: 280px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  height: 290px;
+  padding: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: auto;
+  
+}
+
+/* Calendar header (month navigation) */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.calendar-header button {
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.calendar-header button:hover {
+  background-color: #555;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.day {
+  font-weight: bold;
+}
+
+.calendar-day {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.calendar-day:hover {
+  background-color: #ddd; /* Hover effect for dates */
+}
+
+/* Current day styling */
+.current-day {
+  background-color: #ff2f00;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+}
+
+.selected-day {
+  background-color: rgb(247, 136, 0);
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  width: 34px;
+  height: 35px;
+}
+
+/* Seat Booking Section */
+.seat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.seat {
+  width: 60px;
+  height: 40px;
+  background-color: #bbb;
+  border: 2px solid #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 5px;
+  position: relative;
+}
+
+.seat:hover {
+  background-color: #28a745;
+}
+
+.seat.booked {
+  background-color: #e74c3c;
+  color: white;
+  border-color: #c0392b;
+}
+
+.seat.selected {
+  background-color: #dacd10;
+  color: white;
+  transform: scale(1.1);
+  border-color: #dacd10;
+}
+
+/* Buttons inside seats */
+.book-btn {
+  position: absolute;
+  bottom: -10px; /* Move the "Book" button further below the seat */
+  left: 50%; /* Center the button horizontally */
+  transform: translateX(-50%); /* Adjust centering */
+  padding: 2px 7px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+  background-color: #218838;
+}
+
+.remove-btn {
+  position: absolute;
+  top: -15px; /* Move the "Remove Booking" button above the seat */
+  left: 50%; /* Center the button horizontally */
+  transform: translateX(-50%); /* Adjust centering */
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+  background-color: #c82333;
+}
+
+/* Booking message styling */
+.booking-message {
+  color: #444;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .screen-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-tab,
+  .calendar {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .screen {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar {
+    width: 100%; /* Full width for small devices */
+    height: auto; /* Adjust height */
+    margin-bottom: 20px;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .seat {
+    width: 50px;
+    height: 35px;
+    font-size: 12px;
+  }
+
+  .seat-row {
+    flex-wrap: wrap;
+  }
+
+  .screen {
+    font-size: 1rem;
+  }
+}
+
+.image-container img {
+  height: 300px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
