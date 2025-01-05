@@ -19,9 +19,9 @@ import path from 'path'
 dotenv.config(); // Load environment variables from .env
 
 const app: Application = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
-const cors = require('cors');
+const cors = require('cors')
 
 // Allow requests from localhost:4200 (frontend)
 app.use(
