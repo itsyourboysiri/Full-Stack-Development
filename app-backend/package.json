@@ -1,4 +1,7 @@
 {
+  "dependencies": {
+    "express": "^4.21.2"
+  }
   "name": "app-backend",
   "version": "1.0.0",
   "main": "index.js",
@@ -8,8 +11,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+
   "description": "",
   "dependencies": {
     "typescript": "^5.7.2"
   }
+
 }

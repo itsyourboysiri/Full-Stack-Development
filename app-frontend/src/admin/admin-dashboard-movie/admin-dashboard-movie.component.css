@@ -1,0 +1,68 @@
+/* Styling for action icons */
+.btn i {
+    font-size: 1rem;
+  }
+  
+  /* Add hover effect for buttons */
+  .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+  }
+  
+  /* Responsive table adjustments */
+  @media (max-width: 768px) {
+    .input-group {
+      flex-direction: column;
+    }
+  
+    .input-group select,
+    .input-group input {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  /* Overlay for the popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Popup container with scroll */
+.popup-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%; /* Adjust width for responsiveness */
+  max-height: 80vh; /* Constrain the height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative;
+}
+
+/* Smooth scrolling for the container */
+.popup-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.popup-container::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 4px;
+}
+
+.popup-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
