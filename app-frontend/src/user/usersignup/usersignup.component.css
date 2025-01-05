@@ -1,0 +1,102 @@
+/* Modal Overlay */
+.signup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050; /* Ensure modals are on top */
+  opacity: 0; /* Hidden initially */
+  transform: scale(0.9); /* Slightly scaled down initially */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  pointer-events: none; /* Prevent interaction when hidden */
+  backdrop-filter: blur(8px); /* Blurred background */
+  }
+  
+  /* Modal Visible State */
+  .signup-modal.show {
+    opacity: 1; /* Fully visible */
+    transform: scale(1); /* Full size */
+    pointer-events: auto; /* Allow interaction when visible */
+  }
+  
+  /* Sign-Up Container */
+  .signup-container {
+    max-width: 100%;
+    width: 400px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+    position: relative;
+  }
+  
+  /* Close Button Styling */
+  button.close-button {
+    position: absolute; /* Position relative to the container */
+    top: 10px; /* Align to the top */
+    left: 10px; /* Align to the left */
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer;
+    z-index: 1; /* Ensure it's above other content */
+  }
+  
+  button.close-button i.bi-x-circle-fill {
+    color: #dc3545; /* Red icon color */
+    font-size: 1.5rem; /* Adjust size of the icon */
+    transition: transform 0.2s ease, opacity 0.2s ease; /* Smooth hover effect */
+  }
+  
+  button.close-button i.bi-x-circle-fill:hover {
+    transform: scale(1.2); /* Enlarge slightly on hover */
+    opacity: 0.7; /* Reduce opacity on hover */
+  }
+  
+  /* Form Labels and Inputs */
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Submit Button */
+  button.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button.submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  button.submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }  
