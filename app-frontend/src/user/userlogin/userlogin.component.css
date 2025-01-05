@@ -1,0 +1,54 @@
+/* Modal Overlay */
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050; /* Ensure modals are on top */
+  opacity: 0; /* Hidden initially */
+  transform: scale(0.9); /* Slightly scaled down initially */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  pointer-events: none; /* Prevent interaction when hidden */
+  backdrop-filter: blur(8px); /* Blurred background */
+}
+
+/* Modal Visible State */
+.login-modal.show {
+  opacity: 1; /* Fully visible */
+  transform: scale(1); /* Full size */
+  pointer-events: auto; /* Allow interaction when visible */
+
+}
+
+/* Login Container */
+.login-container {
+  max-width: 100%;
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  padding: 30px;
+  position: relative;
+}
+
+/* Close Icon Styling */
+button i.bi-x-circle-fill {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+button i.bi-x-circle-fill:hover {
+  transform: scale(1.2);
+  opacity: 0.7; /* Slightly transparent on hover */
+}
+
+/* Error Message */
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 10px;
+}

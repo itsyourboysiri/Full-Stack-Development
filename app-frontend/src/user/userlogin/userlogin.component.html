@@ -1,0 +1,38 @@
+<div class="login-modal" [ngClass]="{ show: isVisible }">
+  <div class="login-container position-relative p-4 bg-white rounded shadow">
+    <!-- Close Button -->
+    <button type="button" class="position-absolute top-0 start-0 m-3 border-0 bg-transparent" aria-label="Close"
+      (click)="close()">
+      <i class="bi bi-x-circle-fill text-danger fs-4"></i>
+    </button>
+
+    <!-- Login Header -->
+    <h2 class="text-center mb-4">User Login</h2>
+
+    <!-- Login Form -->
+    <form (ngSubmit)="onSubmit()" #userloginForm="ngForm">
+      <!-- Username Field -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="clientusername" required class="form-control" />
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="clientpassword" required
+          class="form-control" />
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="!userloginForm.valid" class="btn btn-primary w-100">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

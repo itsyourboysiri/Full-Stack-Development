@@ -1,0 +1,57 @@
+<div
+  class="signup-modal"
+  [ngClass]="{ show: isVisible }"
+>
+  <div class="signup-container position-relative p-4 bg-white rounded shadow">
+    <!-- Close Button in Top-Left Corner -->
+    <button
+      type="button"
+      class="close-button"
+      aria-label="Close"
+      (click)="close()"
+    >
+      <i class="bi bi-x-circle-fill"></i>
+    </button>
+
+    <h2 class="text-center mb-4">User Sign-Up</h2>
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="user.clientusername"
+        required
+        class="form-control"
+      />
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="user.clientpassword"
+        required
+        class="form-control"
+      />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="user.clientemail"
+        required
+        class="form-control"
+      />
+
+      <button type="submit" [disabled]="!signupForm.valid" class="submit-button">
+        Submit
+      </button>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+    </form>
+  </div>
+</div>
