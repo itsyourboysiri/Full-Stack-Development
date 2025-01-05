@@ -35,21 +35,21 @@ jobs:
             app-frontend/package-lock.json
             app-backend/package-lock.json
 
-      # Install backend dependencies
-      - name: Install backend dependencies
-        run: npm install
-        working-directory: app-backend
+      # # Install backend dependencies
+      # - name: Install backend dependencies
+      #   run: npm install
+      #   working-directory: app-backend
 
-      # Start the backend server
-      - name: Start Backend Server
-        env:
-          MONGO_URI: "mongodb://localhost:27017/sample"
-        run: node backend.js &
-        working-directory: app-backend
+      # # Start the backend server
+      # - name: Start Backend Server
+      #   env:
+      #     MONGO_URI: "mongodb://localhost:27017/sample"
+      #   run: node backend.js &
+      #   working-directory: app-backend
 
-      # Wait for the backend to start
-      - name: Wait for Backend to Start
-        run: sleep 10
+      # # Wait for the backend to start
+      # - name: Wait for Backend to Start
+      #   run: sleep 10
 
       # Install frontend dependencies
       - name: Install frontend dependencies
