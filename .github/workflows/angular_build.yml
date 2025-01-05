@@ -31,7 +31,9 @@ jobs:
         with:
           node-version: 20.14
           cache: 'npm'
-          cache-dependency-path: package-lock.json 
+          cache-dependency-path: |
+            app-frontend/package-lock.json
+            app-backend/package-lock.json
 
       # # Install backend dependencies
       # - name: Install backend dependencies
